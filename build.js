@@ -6,6 +6,9 @@ const LitMD = require(PubLit + 'LitMD');
 addStyle = (name) => {
 	return '<style>' + fs.readFileSync(`-lib/${name}.css`, 'utf-8') + '</style>\n\n';
 }
+loadFragment = (name) => {
+	return fs.readFileSync(`-lib/${name}.html`, 'utf-8')
+}
 makeRow = (url, year, title) => {
 	return `
 	<tr> 
@@ -26,7 +29,7 @@ mkdir = (dir) => {
 
 buildLanguageList = () => {
 	console.log('buildLanguages');
-	var HTML = '';
+	var HTML = loadFragment('base');
 	HTML += addStyle('base');
 	HTML += `<title>Sprachen</title>`;
 	HTML += '<main>';
@@ -48,7 +51,7 @@ buildLanguageList = () => {
 buildAuthorList = (sourcePath, targetPath) => {
 	console.log('buildAuthors', sourcePath, targetPath);
 	mkdir(targetPath);
-	var HTML = '';
+	var HTML = loadFragment('base');
 	HTML += addStyle('base');
 	HTML += `<title>Autoren</title>`;
 	HTML += '<main>';
@@ -139,7 +142,7 @@ buildAuthorPage = (sourcePath, targetPath) => {
 	console.log('buildBooks', sourcePath, targetPath);
 	var author = sourcePath.split('/').slice(-1)[0].substr(5);
 	mkdir(targetPath);
-	var HTML = '';
+	var HTML = loadFragment('base');
 	HTML += `<title>${author}</title>\n`;
 	HTML += addStyle('base');
 	HTML += addStyle('author');
@@ -159,7 +162,7 @@ buildBookPage = (sourcePath, targetPath) => {
 	var parts = sourcePath.split('/');
 	var author = parts[2].substr(5);
 	var title = parts[4].substr(5).replace('.md', '');
-	var HTML = '';
+	var HTML = loadFragment('base');
 	HTML += `<title>${author}</title>\n`;
 	HTML += addStyle('base');
 	HTML += addStyle('book');
