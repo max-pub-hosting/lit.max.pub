@@ -1,26 +1,38 @@
-<meta charset="UTF-8"> 
+<meta charset="UTF-8"/> 
 
-<meta name="mobile-web-app-capable" content="yes">
-<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="white">
-<meta name="apple-mobile-web-app-title" content="FreeBooks">
+<meta name="mobile-web-app-capable" content="yes"/>
+
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<!-- <meta name="apple-mobile-web-app-status-bar-style" content="white"/> -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="PubLit"/>
+
+<meta content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no' name='viewport' />
+
+
+<link href='https://fonts.googleapis.com/css?family=Quicksand:300' rel='stylesheet' type='text/css'>
+
 <title>Heinrich Heine</title>
 <style>*{
-	font-family: Helvetica;
+	font-family: Quicksand, Helvetica;
 	font-weight: 300;
 }
- 
+body{
+	margin:0;
+	padding:0;
+}
 main{
 	text-align: justify;
 	width: 100%;
 	font-size: 17px;
 	line-height: 1.4; 
+	position: relative;
+	padding-top:30px;
 }
 
-@media (min-width:17cm){
+@media (min-width:15cm){
 	main{
-		width: 17cm;
+		width: 15cm;
 		margin: 0 auto;
 	}
 }
@@ -29,24 +41,64 @@ a {
 	text-decoration: none;
 	color: black;
 }
+td>a{
+	display: block;
+}
 
 table td:first-child{
 	color: silver;
 }
+table td{
+	vertical-align: top;
+	font-size: 20px;
+}
 
 h1{
 	margin: 12mm 0 4mm 0;
+	text-align: left;
 }
 h2{
 	margin: 8mm 0 4mm 0;
-}</style>
+	text-align: left;
+}
+
+
+#header{
+	position: fixed;
+	top:0;
+	// margin: 0 auto;
+	// left:0;
+	height:40px;
+	width: 15cm;
+	background: #fafafa;
+	opacity: 0.95;
+	white-space: nowrap;
+	color: black;
+	font-size: 30px;
+	text-align: left;
+}
+#header a{
+	padding: 0 5px;
+}
+#header img{
+	width: 32px;
+}
+#header a:last-child{
+	float: right;
+}
+</style>
 
 <style>.bio p {display: none;}
 .bio p:nth-child(2){display: block;}
 .bio img {width: 40%; float: right; padding: 0 0 3mm 3mm;}</style>
 
 <main>
-<h1>Heinrich Heine</h1><div class='bio'>
+
+ <center id='header'>
+	<a href='../'>&larr;</a>
+	<a>Free Books</a>
+	<a href='/'>DE</a>
+</center><h1>Heinrich Heine</h1><div class='bio'>
 <img src='pic.jpg'/><p>Christian Johann Heinrich Heine war einer der bedeutendsten deutschen Dichter, Schriftsteller und Journalisten des 19. Jahrhunderts.</p>
 <p>Heine gilt als „letzter Dichter der Romantik“ und zugleich als deren Überwinder. Er machte die Alltagssprache lyrikfähig, erhob das Feuilleton und den Reisebericht zur Kunstform und verlieh der deutschen Literatur eine zuvor nicht gekannte elegante Leichtigkeit. Die Werke kaum eines anderen Dichters deutscher Sprache wurden bis heute so häufig übersetzt und vertont. Als kritischer, politisch engagierter Journalist, Essayist, Satiriker und Polemiker war Heine ebenso bewundert wie gefürchtet. Wegen seiner jüdischen Herkunft und seiner politischen Haltung wurde er von Antisemiten und Nationalisten über seinen Tod hinaus angefeindet. Die Außenseiterrolle prägte sein Leben, sein Werk und dessen Rezeptionsgeschichte.</p>
 </div>

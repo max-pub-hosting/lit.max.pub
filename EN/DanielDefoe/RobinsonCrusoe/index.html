@@ -1,26 +1,38 @@
-<meta charset="UTF-8"> 
+<meta charset="UTF-8"/> 
 
-<meta name="mobile-web-app-capable" content="yes">
-<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport'/>
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="white">
-<meta name="apple-mobile-web-app-title" content="FreeBooks">
+<meta name="mobile-web-app-capable" content="yes"/>
+
+<meta name="apple-mobile-web-app-capable" content="yes"/>
+<!-- <meta name="apple-mobile-web-app-status-bar-style" content="white"/> -->
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+<meta name="apple-mobile-web-app-title" content="PubLit"/>
+
+<meta content='width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no' name='viewport' />
+
+
+<link href='https://fonts.googleapis.com/css?family=Quicksand:300' rel='stylesheet' type='text/css'>
+
 <title>Daniel Defoe</title>
 <style>*{
-	font-family: Helvetica;
+	font-family: Quicksand, Helvetica;
 	font-weight: 300;
 }
- 
+body{
+	margin:0;
+	padding:0;
+}
 main{
 	text-align: justify;
 	width: 100%;
 	font-size: 17px;
 	line-height: 1.4; 
+	position: relative;
+	padding-top:30px;
 }
 
-@media (min-width:17cm){
+@media (min-width:15cm){
 	main{
-		width: 17cm;
+		width: 15cm;
 		margin: 0 auto;
 	}
 }
@@ -29,17 +41,52 @@ a {
 	text-decoration: none;
 	color: black;
 }
+td>a{
+	display: block;
+}
 
 table td:first-child{
 	color: silver;
 }
+table td{
+	vertical-align: top;
+	font-size: 20px;
+}
 
 h1{
 	margin: 12mm 0 4mm 0;
+	text-align: left;
 }
 h2{
 	margin: 8mm 0 4mm 0;
-}</style>
+	text-align: left;
+}
+
+
+#header{
+	position: fixed;
+	top:0;
+	// margin: 0 auto;
+	// left:0;
+	height:40px;
+	width: 15cm;
+	background: #fafafa;
+	opacity: 0.95;
+	white-space: nowrap;
+	color: black;
+	font-size: 30px;
+	text-align: left;
+}
+#header a{
+	padding: 0 5px;
+}
+#header img{
+	width: 32px;
+}
+#header a:last-child{
+	float: right;
+}
+</style>
 
 <style>
 p{
@@ -64,6 +111,20 @@ b{
 </style>
 
 <main>
+<center id='header'>
+ 	<a href='/'>&#9776;</a>
+	<span>Public Literature</span>
+ </center>
+
+
+<!-- <table id='header'>
+<tr>
+ 	<td><a href='/'>&#9776;</a></td>
+		<td>Public Literature</td>
+		<td></td>
+ </tr>
+</table>
+ -->
 <h1>Robinson Crusoe</h1><h2>Daniel Defoe</h1><article><H1>CHAPTER I - START IN LIFE</H1>
 
 <p>

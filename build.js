@@ -17,6 +17,15 @@ makeRow = (url, year, title) => {
 	</tr>
 `;
 }
+makeHeader = (leftLink, leftText, rightLink = '', rightText = '') => {
+	return `
+ <center id='header'>
+	<a href='${leftLink}'>${leftText}</a>
+	<a>Free Books</a>
+	<a href='${rightLink}'>${rightText}</a>
+</center>`;
+}
+
 mkdir = (dir) => {
 	try {
 		fs.mkdirSync(dir);
@@ -29,16 +38,19 @@ mkdir = (dir) => {
 
 buildLanguageList = () => {
 	console.log('buildLanguages');
-	var HTML = loadFragment('base');
+	var HTML = loadFragment('meta');
 	HTML += addStyle('base');
+	HTML += addStyle('languages');
 	HTML += `<title>Sprachen</title>`;
 	HTML += '<main>';
-	HTML += `<h1>Sprachen</h1>`;
-	HTML += '<table>'
+	// HTML += loadFragment('header');
+	HTML += makeHeader('/', `<img src='/icon.png'/>`);
+	// HTML += `<h1>Sprachen</h1>`;
+	HTML += '<br/><table class="list">'
 	fs.readdirSync(PubLit).forEach((item) => {
 		if (item[0] == '.') return;
 		if (item.includes('.')) return;
-		HTML += makeRow(item.substr(0, 2), '', item.substr(3));
+		HTML += makeRow(item.substr(0, 2), `<img src="//max.pub/lib/flags/${item.substr(0,2).toUpperCase()}.png"/>`, item.substr(3));
 		// mkdir(item.substr(0, 2));
 		buildAuthorList(item, item.substr(0, 2));
 	});
@@ -51,11 +63,13 @@ buildLanguageList = () => {
 buildAuthorList = (sourcePath, targetPath) => {
 	console.log('buildAuthors', sourcePath, targetPath);
 	mkdir(targetPath);
-	var HTML = loadFragment('base');
-	HTML += addStyle('base');
+	var HTML = loadFragment('meta');
 	HTML += `<title>Autoren</title>`;
+	HTML += addStyle('base');
 	HTML += '<main>';
-	HTML += `<h1>Autoren</h1>`;
+	// HTML += loadFragment('header');
+	HTML += makeHeader('../', `&larr;`, '/', targetPath);
+	// HTML += `<h1>Autoren</h1>`;
 	fs.readdirSync(PubLit + sourcePath).forEach((type) => {
 		if (type[0] == '.') return;
 		if (type[0] == '-') return;
@@ -142,11 +156,13 @@ buildAuthorPage = (sourcePath, targetPath) => {
 	console.log('buildBooks', sourcePath, targetPath);
 	var author = sourcePath.split('/').slice(-1)[0].substr(5);
 	mkdir(targetPath);
-	var HTML = loadFragment('base');
+	var HTML = loadFragment('meta');
 	HTML += `<title>${author}</title>\n`;
 	HTML += addStyle('base');
 	HTML += addStyle('author');
 	HTML += '<main>\n';
+	// HTML += loadFragment('header');
+	HTML += makeHeader('../', `&larr;`, '/', targetPath.split('/')[0]);
 	HTML += `<h1>${author}</h1>`;
 	HTML += addBiography(sourcePath, targetPath);
 	HTML += addCV(sourcePath);
@@ -162,12 +178,13 @@ buildBookPage = (sourcePath, targetPath) => {
 	var parts = sourcePath.split('/');
 	var author = parts[2].substr(5);
 	var title = parts[4].substr(5).replace('.md', '');
-	var HTML = loadFragment('base');
+	var HTML = loadFragment('meta');
 	HTML += `<title>${author}</title>\n`;
 	HTML += addStyle('base');
 	HTML += addStyle('book');
 	// HTML += addStyle('books');
 	HTML += '<main>\n';
+	HTML += loadFragment('header');
 	HTML += `<h1>${title}</h1>`;
 	HTML += `<h2>${author}</h1>`;
 	var content = fs.readFileSync(PubLit + sourcePath, 'utf-8');
